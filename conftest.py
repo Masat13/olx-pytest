@@ -8,7 +8,7 @@ def get_playwright():
         yield playwright
 
 @fixture
-def olx_env(get_playwright):
+def olx_env(get_playwright, request):
     site = olx(get_playwright)
     yield site
     site.close()
@@ -19,3 +19,5 @@ def olx_auth(olx_env):
     olx_env.user_clicks_myProfile()
     olx_env.login_with('correct_creds')
     yield olx_env
+
+
