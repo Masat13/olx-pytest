@@ -34,8 +34,7 @@ class olx:
     def login_with(self, user_creds):
         self.page.locator("input[name=\"username\"]").fill(creds.get(user_creds)['username'])
         self.page.locator("input[name=\"password\"]").fill(creds.get(user_creds)['userpass'])
-        with self.page.expect_navigation(wait_until='load', timeout=30000):
-            self.page.get_by_test_id("login-submit-button").click(no_wait_after=True)
+        self.page.get_by_test_id("login-submit-button").click()
 
     def check_fail_login(self):
         expect(self.page.get_by_test_id("login-form").locator("div").filter(
