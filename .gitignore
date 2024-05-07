@@ -1,0 +1,17 @@
+# Byte-compiled / optimized / DLL files
+__ pycache_
+*. py[cod]
+*$py.class
+venv
+#folders
+.idea/
+.pytest_chache/
+include/*
+lib/*
+scripts/*
+
+# reporting
+report/
+
+# Logs
+*. log
