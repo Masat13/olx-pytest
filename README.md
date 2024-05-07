@@ -15,5 +15,5 @@ in powershell run:
 - scoop install allure  
 
 Then:
-- run tests
+- pytest tests --alluredir=report
 - allure serve report  
