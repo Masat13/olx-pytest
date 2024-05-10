@@ -3,7 +3,7 @@ Some new super test
 pip install --no-cache-dir -r requirments.txt
 playwright install
 
-run test - pytest tests
+run test - pytest tests -s -v  
 
 To get allure report on Windows: 
 
@@ -20,4 +20,4 @@ Then:
 
 If tests has some marker like '@marker.smoke' e.g., you can use 'pytest -m smoke' to run selected tests
 
-For parallel tests run 'pytest -n auto --dist=loadscope'
+For parallel tests run 'pytest -s -v -n auto --dist=loadscope'
