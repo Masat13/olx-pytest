@@ -1,6 +1,6 @@
 Some new super test
 
-pip install --no-cache-dir -r requirements.txt
+pip install --no-cache-dir -r requirments.txt
 playwright install
 
 run test - pytest tests
@@ -19,3 +19,5 @@ Then:
 - allure serve report  
 
 If tests has some marker like '@marker.smoke' e.g., you can use 'pytest -m smoke' to run selected tests
+
+For parallel tests run 'pytest -n auto --dist=loadscope'
