@@ -21,3 +21,6 @@ Then:
 If tests has some marker like '@marker.smoke' e.g., you can use 'pytest -m smoke' to run selected tests
 
 For parallel tests run 'pytest -s -v -n auto --dist=loadscope'
+
+docker build -t custom_framework
+docker run custom_framework

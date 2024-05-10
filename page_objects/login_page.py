@@ -6,7 +6,7 @@ from page_objects.locators import *
 
 class olx:
     def __init__(self, playwright):
-        self.browser = playwright.chromium.launch(headless=False, slow_mo=900)
+        self.browser = playwright.chromium.launch(headless=True, slow_mo=900)
         self.context = self.browser.new_context()
         self.page = self.context.new_page()
         self.main_page = main_page(self.page)
