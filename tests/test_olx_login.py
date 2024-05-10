@@ -1,7 +1,9 @@
 import allure
+from pytest import mark
 
 
 @allure.title('Some negative login tets')
+@mark.smoke
 def test_login_negative(olx_env):
     olx_env.go_to('main')
     olx_env.user_clicks_myProfile()

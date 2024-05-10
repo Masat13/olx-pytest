@@ -1,7 +1,9 @@
 import allure
+from pytest import mark
 
 
 @allure.title('some like main page and filter test')
+@mark.smoke
 def test_furniture_filter(olx_auth):
     olx_auth.go_to('main')
     olx_auth.main_page.check_main_page_isOpened()

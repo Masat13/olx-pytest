@@ -17,3 +17,5 @@ in powershell run:
 Then:
 - pytest tests --alluredir=report
 - allure serve report  
+
+If tests has some marker like '@marker.smoke' e.g., you can use 'pytest -m smoke' to run selected tests
