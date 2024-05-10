@@ -9,9 +9,3 @@ venv
 include/*
 lib/*
 scripts/*
-
-# reporting
-allure_report/
-
-# Logs
-*. log
