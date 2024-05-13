@@ -3,7 +3,7 @@ from pytest import mark
 
 
 @allure.title('Some negative login tets')
-@mark.smoke
+@mark.login1
 def test_login_negative(olx_env):
     olx_env.go_to('main')
     olx_env.user_clicks_myProfile()
@@ -13,6 +13,7 @@ def test_login_negative(olx_env):
 
 
 @allure.title('Some positive login tets')
+@mark.login2
 def test_login_positive(olx_env):
     olx_env.go_to('main')
     olx_env.user_clicks_myProfile()
