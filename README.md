@@ -23,4 +23,4 @@ If tests has some marker like '@marker.smoke' e.g., you can use 'pytest -m smoke
 For parallel tests run 'pytest -s -v -n auto --dist=loadscope'
 
 docker build -t custom_framework .
-docker run -it --rm --ipc=host -p 8001:8001 custom_framework
+docker run -it --rm -p 8001:8001 custom_framework
