@@ -51,5 +51,6 @@ class common_steps:
     def reload_page(self):
         self.page.reload()
 
-
+    def allure_screenshot_attach(self):
+        allure.attach(body=self.page.screenshot(), name='screenshot', attachment_type=allure.attachment_type.PNG)
 

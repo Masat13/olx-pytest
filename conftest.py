@@ -23,7 +23,7 @@ def user_auth(get_env):
     get_env.login_with('correct_creds')
     yield get_env
 
-
+# attach screen to Tear down allure report
 @fixture(scope='function', autouse=True)
 def make_screenshots(request, get_env):
     yield
