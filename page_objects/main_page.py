@@ -1,6 +1,5 @@
-from playwright.sync_api import Playwright, sync_playwright, expect
 from page_objects.login_page import *
-from page_objects.locators import *
+from Data.creds import *
 import allure
 
 
@@ -10,7 +9,7 @@ class main_page:
 
     @allure.step
     def check_main_page_isOpened(self):
-        expect(self.page).to_have_url(url_host)
+        expect(self.page).to_have_url({HOSTS["frontoffice"]})
         expect(self.page.get_by_test_id("home-categories-title")).to_contain_text("Роз4діли на сервісі OLX")
         expect(self.page.get_by_test_id("cat-36").locator("span")).to_contain_text("Дитячий світ")
         expect(self.page.get_by_test_id("cat-3").locator("span")).to_contain_text("Запчастини для транспорту")
