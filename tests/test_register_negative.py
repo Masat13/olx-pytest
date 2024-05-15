@@ -1,39 +1,46 @@
 import allure
 import pytest
+from page_objects.auth_register_page import *
+from page_objects.common import *
+from conftest import *
 
 
 @allure.title('Negative register with empty data')
 @pytest.mark.register
 def test_negative_register_empty_data(get_env):
-    get_env.go_to('main')
-    get_env.register_page.clicks_personal_cabinet_and_choose_action('Реєстрація')
-    get_env.register_page.verify_register_form_is_opened()
-    get_env.user_clicks_button('Продовжити')
-    get_env.expected_text_on_the_page_is('Ім\'я має містити від 1 до 32 символів!')
-    get_env.expected_text_on_the_page_is('Прізвище має містити від 1 до 32 символів!')
-    get_env.expected_text_on_the_page_is('Адреса електронної пошти, здається, недійсна!')
-    get_env.expected_text_on_the_page_is('Телефон повинен містити від 3 до 32 символів!')
-    get_env.expected_text_on_the_page_is('Адреса електронної пошти, здається, недійсна!')
-    get_env.expected_text_on_the_page_is('Пароль повинен містити від 4 до 20 символів!')
-    get_env.not_expected_text_on_the_page_is('Підтвердження пароля не відповідає паролю!')
+    register_page = register(get_env)
+    common = common_steps(get_env)
+    common.go_to('main')
+    common.clicks_personal_cabinet_and_choose_action('Реєстрація')
+    register_page.verify_register_form_is_opened()
+    common.user_clicks_button('Продовжити')
+    common.expected_text_on_the_page_is('Ім\'я має містити від 1 до 32 символів!')
+    common.expected_text_on_the_page_is('Прізвище має містити від 1 до 32 символів!')
+    common.expected_text_on_the_page_is('Адреса електронної пошти, здається, недійсна!')
+    common.expected_text_on_the_page_is('Телефон повинен містити від 3 до 32 символів!')
+    common.expected_text_on_the_page_is('Адреса електронної пошти, здається, недійсна!')
+    common.expected_text_on_the_page_is('Пароль повинен містити від 4 до 20 символів!')
+    common.not_expected_text_on_the_page_is('Підтвердження пароля не відповідає паролю!')
 
 
 @allure.title('Negative register with invalid data')
 @pytest.mark.register
 def test_negative_register_invalid_data(get_env):
-    get_env.go_to('main')
-    get_env.register_page.clicks_personal_cabinet_and_choose_action('Реєстрація')
-    get_env.register_page.fill_all_register_form_inputs('x')
-    get_env.user_clicks_button('Продовжити')
-    get_env.not_expected_text_on_the_page_is('Ім\'я має містити від 1 до 32 символів!')
-    get_env.not_expected_text_on_the_page_is('Прізвище має містити від 1 до 32 символів!')
-    get_env.expected_text_on_the_page_is('Адреса електронної пошти, здається, недійсна!')
-    get_env.expected_text_on_the_page_is('Телефон повинен містити від 3 до 32 символів!')
-    get_env.expected_text_on_the_page_is('Адреса електронної пошти, здається, недійсна!')
-    get_env.expected_text_on_the_page_is('Пароль повинен містити від 4 до 20 символів!')
-    get_env.register_page.fill_register_form_input('input_confirm', 'xxx')
-    get_env.user_clicks_button('Продовжити')
-    get_env.expected_text_on_the_page_is('Підтвердження пароля не відповідає паролю!')
+    register_page = register(get_env)
+    common = common_steps(get_env)
+    common.go_to('main')
+    common.clicks_personal_cabinet_and_choose_action('Реєстрація')
+    register_page.fill_all_register_form_inputs('x')
+    common.user_clicks_button('Продовжити')
+    common.not_expected_text_on_the_page_is('Ім\'я має містити від 1 до 32 символів!')
+    common.not_expected_text_on_the_page_is('Прізвище має містити від 1 до 32 символів!')
+    common.expected_text_on_the_page_is('Адреса електронної пошти, здається, недійсна!')
+    common.expected_text_on_the_page_is('Телефон повинен містити від 3 до 32 символів!')
+    common.expected_text_on_the_page_is('Адреса електронної пошти, здається, недійсна!')
+    common.expected_text_on_the_page_is('Пароль повинен містити від 4 до 20 символів!')
+    register_page.fill_register_form_input('input_confirm', 'xxx')
+    common.user_clicks_button('Продовжити')
+    common.expected_text_on_the_page_is('Підтвердження пароля не відповідає паролю!')
 
 
 

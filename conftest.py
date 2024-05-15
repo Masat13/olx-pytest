@@ -1,7 +1,9 @@
 from pytest import fixture, hookimpl
 from playwright.sync_api import Playwright, sync_playwright, expect
-from page_objects.common import common_page
 import allure
+from page_objects.common import *
+
+
 
 
 @fixture
@@ -11,14 +13,19 @@ def get_playwright():
 
 
 @fixture
-def get_env(get_playwright, request):
-    site = common_page(get_playwright)
-    yield site
-    site.close()
+def get_env(request, get_playwright):
+    browser = get_playwright.chromium.launch(headless=True)
+    page = browser.new_page()
+
+    yield page
+
+    page.close()
+    browser.close()
 
 
 @fixture
 def user_auth(get_env):
+    # common = common_steps(get_env)
     get_env.go_to('main')
     get_env.user_clicks_myProfile()
     get_env.login_with('correct_creds')

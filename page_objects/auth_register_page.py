@@ -8,15 +8,10 @@ class login_page:
         self.page = page
 
 
-class register_page:
+class register:
     def __init__(self, page):
         self.page = page
 
-    @allure.step
-    def clicks_personal_cabinet_and_choose_action(self, button):
-        # Реєстрація, Авторизація
-        self.page.get_by_role("button", name="Особистий кабінет").click()
-        self.page.get_by_role("link", name=button).click()
 
     @allure.step
     def verify_register_form_is_opened(self):

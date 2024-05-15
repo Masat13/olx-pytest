@@ -2,12 +2,9 @@ from page_objects.auth_register_page import *
 from Data.creds import *
 
 
-class common_page:
-    def __init__(self, playwright):
-        self.browser = playwright.chromium.launch(headless=True, slow_mo=900)
-        self.context = self.browser.new_context()
-        self.page = self.context.new_page()
-        self.register_page = register_page(self.page)
+class common_steps:
+    def __init__(self, page):
+        self.page = page
 
     @allure.step
     def go_to(self, name):
@@ -15,6 +12,12 @@ class common_page:
             self.page.goto(f'{HOSTS["frontoffice"]}')
         else:
             self.page.goto(f'{HOSTS["frontoffice"]}/{name}')
+
+    @allure.step
+    def clicks_personal_cabinet_and_choose_action(self, button):
+        # Реєстрація, Авторизація
+        self.page.get_by_role("button", name="Особистий кабінет").click()
+        self.page.get_by_role("link", name=button).click()
 
     @allure.step
     def login_with(self, user_creds):
@@ -47,8 +50,5 @@ class common_page:
     def reload_page(self):
         self.page.reload()
 
-    def close(self):
-        self.context.close()
-        self.browser.close()
 
 
