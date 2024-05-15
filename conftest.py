@@ -1,26 +1,18 @@
-from pytest import fixture, hookimpl
+from pytest import fixture
 from playwright.sync_api import Playwright, sync_playwright, expect
-import allure
 from page_objects.common import *
 
 
-
-
 @fixture
-def get_playwright():
+def get_env(request):
     with sync_playwright() as playwright:
-        yield playwright
+        browser = playwright.chromium.launch(headless=True)
+        page = browser.new_page()
 
+        yield page
 
-@fixture
-def get_env(request, get_playwright):
-    browser = get_playwright.chromium.launch(headless=True)
-    page = browser.new_page()
-
-    yield page
-
-    page.close()
-    browser.close()
+        page.close()
+        browser.close()
 
 
 @fixture

@@ -1,7 +1,4 @@
-import allure
 import pytest
-from page_objects.auth_register_page import *
-from page_objects.common import *
 from conftest import *
 
 

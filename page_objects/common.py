@@ -1,5 +1,6 @@
 from page_objects.auth_register_page import *
 from Data.creds import *
+from Data.locators import *
 
 
 class common_steps:
@@ -26,9 +27,9 @@ class common_steps:
             'valid_user': {'username': 'hurylov.maksym@gmail.com', 'userpass': 'QAutomation1!'}
         }
         print(users.get(user_creds))
-        self.page.locator("input[name=\"username\"]").fill(users.get(user_creds)['username'])
-        self.page.locator("input[name=\"password\"]").fill(users.get(user_creds)['userpass'])
-        self.page.get_by_test_id("login-submit-button").click()
+        self.page.locator(LOGIN_FORM.get('input_email')).fill(users.get(user_creds)['username'])
+        self.page.locator(LOGIN_FORM.get('input_password')).fill(users.get(user_creds)['userpass'])
+        self.user_clicks_button('Увійти')
 
     @allure.step
     def check_page_url_is(self, url_name):

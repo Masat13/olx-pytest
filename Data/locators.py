@@ -7,3 +7,10 @@ REGISTER_FORM = {
     "input_password": '//input[@name="password"][@id="input-register-password"]',
     "input_confirm": '//input[@name="confirm"]'
 }
+
+LOGIN_FORM = {
+    "input_email": '//input[@name="email"][@id="input-email"]',
+    "input_password": '//input[@name="password"][@id="input-password"]',
+    "invalid_data_alert": '//div[@class="alert alert-danger"][text()=" Попередження: Не відповідає адреса електронної '
+                          'пошти та / або пароль."]'
+}
