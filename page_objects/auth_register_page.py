@@ -24,6 +24,7 @@ class login:
 
     @allure.step
     def validate_login_successful(self):
+        expect(self.page.locator(".account-login")).not_to_be_visible()
         expect(self.page.get_by_text("Вітаємо! Вхід успішний×")).to_be_visible()
         self.page.get_by_role("button", name="Особистий кабінет").click()
         expect(self.page.locator("#top-links")).to_be_visible()

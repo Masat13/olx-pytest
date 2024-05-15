@@ -26,7 +26,7 @@ class common_steps:
             'invalid_user': {'username': 'someusrname@gmail.com', 'userpass': '1111111'},
             'valid_user': {'username': 'hurylov.maksym@gmail.com', 'userpass': 'QAutomation1!'}
         }
-        print(users.get(user_creds))
+        allure.attach(str(users.get(user_creds)['username']), name="User Credentials", attachment_type=allure.attachment_type.TEXT)
         self.page.locator(LOGIN_FORM.get('input_email')).fill(users.get(user_creds)['username'])
         self.page.locator(LOGIN_FORM.get('input_password')).fill(users.get(user_creds)['userpass'])
         self.user_clicks_button('Увійти')
