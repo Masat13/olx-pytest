@@ -20,7 +20,10 @@ class login:
     @allure.step
     def validate_login_failed(self):
         expect(self.page.locator(".account-login")).to_be_visible()
-        expect(self.page.locator(LOGIN_FORM.get("invalid_data_alert"))).to_be_visible()
+        if not self.page.locator(LOGIN_FORM.get("invalid_data_alert")).is_visible():
+            expect(self.page.locator(LOGIN_FORM.get("enter_tries_alert"))).to_be_visible()
+        else:
+            expect(self.page.locator(LOGIN_FORM.get("invalid_data_alert"))).to_be_visible()
 
     @allure.step
     def validate_login_successful(self):

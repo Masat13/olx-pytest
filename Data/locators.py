@@ -12,5 +12,7 @@ LOGIN_FORM = {
     "input_email": '//input[@name="email"][@id="input-email"]',
     "input_password": '//input[@name="password"][@id="input-password"]',
     "invalid_data_alert": '//div[@class="alert alert-danger"][text()=" Попередження: Не відповідає адреса електронної '
-                          'пошти та / або пароль."]'
+                          'пошти та / або пароль."]',
+    "enter_tries_alert": '//div[@class="alert alert-danger"][text()=" Попередження: Ваш обліковий запис перевищив '
+                         'дозволену кількість спроб входу. Повторіть спробу через 1 годину."]'
 }
