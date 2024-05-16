@@ -1,7 +1,7 @@
 
 HOSTS = {
     "backoffice": "some admin host",
-    "frontoffice": "https://sanor.ltd/"
+    "frontoffice": "https://sanor.ltd"
 }
 
 # URL list store

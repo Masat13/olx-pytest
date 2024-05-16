@@ -17,11 +17,14 @@ def get_env(request):
 
 @fixture
 def user_auth(get_env):
-    # common = common_steps(get_env)
-    get_env.go_to('main')
-    get_env.user_clicks_myProfile()
-    get_env.login_with('correct_creds')
-    yield get_env
+    def _user_auth(user_creds):
+        common = common_steps(get_env)
+        common.go_to('main')
+        common.clicks_personal_cabinet_and_choose_action('Авторизація')
+        common.login_with(user_creds)
+        return common
+    yield _user_auth
+
 
 # attach screen to Tear down allure report
 @fixture(scope='function', autouse=True)

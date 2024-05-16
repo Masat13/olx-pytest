@@ -3,7 +3,6 @@ from conftest import *
 
 
 @allure.title('Negative register with empty data')
-@pytest.mark.register
 def test_negative_register_empty_data(get_env):
     register_page = register(get_env)
     common = common_steps(get_env)
@@ -21,7 +20,6 @@ def test_negative_register_empty_data(get_env):
 
 
 @allure.title('Negative register with invalid data')
-@pytest.mark.register
 def test_negative_register_invalid_data(get_env):
     register_page = register(get_env)
     common = common_steps(get_env)

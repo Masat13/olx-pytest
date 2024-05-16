@@ -11,8 +11,9 @@ playwright install
 
 2. Run test:
 - To run all tests: `pytest -s -v tests`
-- To run single test (each test has own tag @mark.{mark_name}): `pytest -s -v -m {mark_name}`
+- To run test with mark (some tests has own tag @mark.{mark_name}): `pytest -s -v -m {mark_name}`
 - For parallel tests run: `pytest -s -v -n auto --dist=loadscope`
+- To run parallel test suit: `pytest -s -v -m parallel -n auto`
 
 ### To get allure report on Windows:
 
@@ -27,8 +28,14 @@ scoop install allure
 - `allure serve allure_report ` 
 
 ### You can use docker:
+First uncomment "allure docker part" in Dockerfile
 ```
 docker build -t custom_framework .
 docker run -it --rm -p 8001:8001 custom_framework
 ```
 Observe test run Allure results at: 'http://localhost:8001/index.html'
+
+### If installed all dependencies and allure, you can run:
+```
+python runner.py
+```
