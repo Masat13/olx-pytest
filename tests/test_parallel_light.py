@@ -2,6 +2,7 @@ from conftest import *
 import pytest
 
 
+# In this suit main target is to run it in parallel mode using @pytest.mark.parallel, 2/3 tests should fail
 @allure.title('Green parallel test')
 @pytest.mark.parallel
 def test_parallel_green(user_auth):

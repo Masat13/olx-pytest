@@ -3,6 +3,7 @@ from playwright.sync_api import Playwright, sync_playwright, expect
 from page_objects.common import *
 
 
+# environment setup
 @fixture
 def get_env(request):
     with sync_playwright() as playwright:
@@ -15,6 +16,7 @@ def get_env(request):
         browser.close()
 
 
+# environment setup with pre-authorized user, like some background step
 @fixture
 def user_auth(get_env):
     def _user_auth(user_creds):
