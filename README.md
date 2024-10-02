@@ -35,7 +35,7 @@ docker run -it --rm -p 8001:8001 custom_framework
 ```
 Observe test run Allure results at: 'http://localhost:8001/index.html'
 
-### If installed all dependencies and allure, you can run:
+### If all dependencies and allure are installed, you can run:
 ```
 python runner.py
 ```
