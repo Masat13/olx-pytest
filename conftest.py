@@ -1,6 +1,8 @@
 from pytest import fixture
 from playwright.sync_api import Playwright, sync_playwright, expect
 from page_objects.common import *
+import pytest
+import allure
 
 
 # environment setup
@@ -28,12 +30,16 @@ def user_auth(get_env):
     yield _user_auth
 
 
-# attach screen to Tear down allure report
-@fixture(scope='function', autouse=True)
-def make_screenshots(request, get_env):
-    yield
-    if hasattr(get_env, 'page') and get_env.page:
-        allure.attach(body=get_env.page.screenshot(), name='screenshot', attachment_type=allure.attachment_type.PNG)
+@pytest.hookimpl(tryfirst=True, hookwrapper=True)
+def pytest_runtest_makereport(item, call):
+    outcome = yield
+    report = outcome.get_result()
+
+    if report.when == "call" and report.failed:
+        page = item.funcargs.get('get_env')
+
+        if page:
+            allure.attach(body=page.screenshot(), name='screenshot', attachment_type=allure.attachment_type.PNG)
 
 
 
